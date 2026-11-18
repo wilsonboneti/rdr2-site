@@ -59,6 +59,18 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);l
   color:var(--osso);
 }
 
+/* Imagem da seção Lançamento */
+.capa-jogo{
+  margin:50px 0 0;
+  max-width:420px;
+}
+.capa-jogo img{
+  width:100%;
+  height:auto;
+  display:block;
+  border:1px solid var(--linha);
+}
+
 .ficha{display:grid;grid-template-columns:max-content 1fr;gap:12px 40px;margin:0 0 40px;border-top:1px solid var(--linha);padding-top:28px}
 .ficha dt{color:var(--cinza)}
 .ficha dd{margin:0}
@@ -119,6 +131,7 @@ footer p{margin:0}
   .rolar{display:none}
   .gangue{grid-template-columns:1fr}
   .retrato{min-height:300px}
+  .capa-jogo{max-width:100%}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important}
