@@ -1,139 +1,259 @@
-:root{
-  --preto:#0b0b0c;--grafite:#151515;--osso:#e9e4d8;--cinza:#8d8779;
-  --vermelho:#b3201a;--linha:#ffffff1f;
-  --serif:"IM Fell English",Georgia,serif;
-  --sans:"Libre Franklin",Helvetica,Arial,sans-serif;
+/* ===== Base ===== */
+:root {
+  --fundo: #0a0a0a;
+  --texto: #e9e3d6;
+  --texto-suave: #c9c2b2;
+  --titulo: #efe8d8;
+  --vermelho: #b3261e;
+  --linha: rgba(255, 255, 255, 0.12);
+  --serif: "IM Fell English", Georgia, serif;
+  --sans: "Libre Franklin", system-ui, sans-serif;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--preto);color:var(--osso);font-family:var(--sans);font-weight:300;font-size:1.05rem;line-height:1.8}
-a{color:inherit}
-a:focus-visible,button:focus-visible{outline:2px solid var(--osso);outline-offset:4px}
 
-.topo{
-  position:fixed;top:0;left:0;right:0;z-index:20;
-  display:flex;justify-content:space-between;align-items:center;gap:20px;
-  padding:18px 40px;transition:background .3s,padding .3s;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
 }
-.topo.solido{background:#0b0b0cf2;padding:12px 40px;border-bottom:1px solid var(--linha)}
-.marca{font-family:var(--serif);font-size:1.25rem;text-decoration:none;white-space:nowrap}
-nav{display:flex;gap:26px;flex-wrap:wrap}
-nav a{text-decoration:none;font-size:.85rem;color:var(--osso);opacity:.75;transition:opacity .2s}
-nav a:hover{opacity:1}
 
-.capa{
-  position:relative;min-height:100vh;display:flex;align-items:flex-end;
-  padding:0 40px 110px;
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ===== Menu do topo ===== */
+.topo {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 5vw;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.topo.solido {
+  background: rgba(10, 10, 10, 0.95);
+  box-shadow: 0 1px 0 var(--linha);
+}
+.marca {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--titulo);
+}
+.topo nav { display: flex; gap: 28px; }
+.topo nav a {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  transition: color 0.2s;
+}
+.topo nav a:hover { color: #fff; }
+
+/* ===== Capa ===== */
+.capa {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
   background:
-    linear-gradient(0deg,var(--preto) 0,#0b0b0c99 35%,#0b0b0c33 100%),
-    url("img/capa.jpg") center/cover no-repeat,
-    radial-gradient(ellipse at 50% 100%,#6a2a1c 0,#2a1614 35%,#0b0b0c 75%);
+    radial-gradient(ellipse at 50% 100%, rgba(179, 38, 30, 0.35), transparent 60%),
+    linear-gradient(#0a0a0a, #140b09);
 }
-.capa-conteudo{max-width:1100px}
-.pequeno{font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza);margin:0 0 18px}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.2rem,11vw,9.5rem);line-height:.92;margin:0;letter-spacing:-.02em}
-.rolar{position:absolute;right:40px;bottom:40px;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--cinza);writing-mode:vertical-rl}
-.rolar::after{content:"";display:block;width:1px;height:60px;background:var(--cinza);margin:12px auto 0}
-
-main{display:block}
-.bloco{
-  max-width:1240px;margin:0 auto;padding:130px 40px;
-  display:grid;grid-template-columns:1fr 2fr;gap:70px;
-  border-top:1px solid var(--linha);
+.pequeno {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 18px;
 }
-.bloco.coluna{grid-template-columns:1fr}
-.lado{position:sticky;top:100px;align-self:start}
-.coluna .lado{position:static;max-width:640px}
-h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.05;margin:0}
-.texto{max-width:62ch;color:#d6d0c2}
-.sub{font-family:var(--serif);font-weight:400;font-size:1.7rem;margin:60px 0 20px}
-
-/* Lançamento: texto no lugar dos contadores */
-.lancamento-texto{
-  margin-bottom:50px;
-  padding-top:26px;
-  border-top:1px solid var(--linha);
+.capa h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 1.05;
+  color: var(--titulo);
 }
-.lancamento-texto strong{
-  font-weight:600;
-  color:var(--osso);
+.rolar {
+  position: absolute;
+  bottom: 32px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
 }
 
-/* Imagem embaixo do título Lançamento */
-.capa-jogo{
-  margin:32px 0 0;
-  max-width:100%;
+/* ===== Blocos (duas colunas: título/imagem + texto) ===== */
+.bloco {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 90px 5vw;
 }
-.capa-jogo img{
-  width:100%;
-  height:auto;
-  display:block;
-  border:1px solid var(--linha);
+.bloco.coluna { grid-template-columns: 1fr; gap: 40px; }
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--titulo);
+  margin-bottom: 28px;
+}
+.sub {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--titulo);
+  margin: 36px 0 14px;
 }
 
-.ficha{display:grid;grid-template-columns:max-content 1fr;gap:12px 40px;margin:0 0 40px;border-top:1px solid var(--linha);padding-top:28px}
-.ficha dt{color:var(--cinza)}
-.ficha dd{margin:0}
-
-.grande-texto{font-size:1.15rem;line-height:1.9;margin:0 0 26px}
-
-.regioes{display:flex;flex-direction:column}
-.regiao{
-  padding:26px 0 26px 26px;
-  border-left:2px solid var(--vermelho);
-  border-bottom:1px solid var(--linha);
-  transition:padding .3s,background .3s;
+.capa-jogo img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linha);
 }
-.regiao:first-child{border-top:1px solid var(--linha)}
-.regiao:hover{padding-left:38px;background:#ffffff08}
-.regiao h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;line-height:1.1;margin:0 0 8px;color:var(--osso)}
-.regiao p{margin:0;color:#d6d0c2;max-width:52ch}
 
-.tempo{list-style:none;margin:0;padding:0}
-.tempo li{display:grid;grid-template-columns:90px 1fr;padding:16px 0;border-top:1px solid var(--linha)}
-.tempo b{font-family:var(--serif);font-weight:400;font-size:1.5rem}
-.tempo span{color:#d6d0c2}
-
-/* Personagens: descrição sempre visível */
-.coluna .lado{margin-bottom:10px}
-.gangue{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
-.retrato{
-  position:relative;overflow:hidden;
-  min-height:360px;display:flex;align-items:flex-end;
-  background:linear-gradient(160deg,var(--cor),#0b0b0c);
+/* Imagem mais para baixo em "A história" e "O mapa" */
+#historia .lado .capa-jogo,
+#mapa .lado .capa-jogo {
+  margin-top: 60px;
 }
-.retrato .inicial{
-  position:absolute;top:10px;left:0;right:0;height:180px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:9rem;color:#ffffff1f;
-}
-.retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.5) contrast(1.05)}
-.retrato .legenda{
-  position:relative;width:100%;padding:90px 20px 22px;
-  background:linear-gradient(transparent,#000d 45%);
-}
-.retrato b{display:block;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15}
-.retrato small{color:var(--cinza);display:block;margin-bottom:10px}
-.retrato .detalhe{margin:0;font-size:.92rem;line-height:1.6;color:#d6d0c2}
 
-.mapaimg{margin:0 0 40px}
-.mapaimg img{width:100%;display:block;border:1px solid var(--linha)}
+/* ===== Textos ===== */
+.texto { color: var(--texto-suave); margin-bottom: 20px; }
+.grande-texto { font-size: 1.05rem; line-height: 1.9; }
+.texto strong { color: var(--titulo); font-weight: 600; }
 
-footer{border-top:1px solid var(--linha);padding:50px 40px;text-align:center;color:var(--cinza);font-size:.9rem}
-footer p{margin:0}
-
-@media (max-width:860px){
-  .bloco{grid-template-columns:1fr;gap:30px;padding:80px 22px}
-  .lado{position:static}
-  .topo{padding:14px 20px}
-  .topo nav{display:none}
-  .capa{padding:0 22px 90px}
-  .rolar{display:none}
-  .gangue{grid-template-columns:1fr}
-  .retrato{min-height:300px}
-  .capa-jogo{max-width:360px}
+/* ===== Ficha técnica ===== */
+.ficha {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 28px;
+  margin: 30px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
 }
-@media (prefers-reduced-motion:reduce){
-  *{transition:none!important}
-  html{scroll-behavior:auto}
+.ficha dt {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.ficha dd { color: var(--titulo); }
+
+/* ===== Linha do tempo ===== */
+.tempo { list-style: none; border-left: 1px solid var(--vermelho); }
+.tempo li {
+  display: flex;
+  gap: 24px;
+  padding: 10px 0 10px 24px;
+}
+.tempo b {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--titulo);
+  min-width: 60px;
+}
+.tempo span { color: var(--texto-suave); }
+
+/* ===== Regiões do mapa ===== */
+.regioes { border-left: 2px solid var(--vermelho); }
+.regiao {
+  padding: 22px 28px;
+  border-top: 1px solid var(--linha);
+}
+.regiao:first-child { border-top: 0; }
+.regiao h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--titulo);
+  margin-bottom: 4px;
+}
+.regiao p { color: var(--texto-suave); max-width: 520px; }
+
+/* ===== Gangue ===== */
+.gangue {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+}
+.retrato {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--cor, #222);
+  border: 1px solid var(--linha);
+  display: flex;
+  align-items: flex-end;
+}
+.retrato .inicial {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  font-family: var(--serif);
+  font-size: 7rem;
+  color: rgba(255, 255, 255, 0.15);
+}
+.retrato img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.retrato .legenda {
+  position: relative;
+  width: 100%;
+  padding: 60px 18px 18px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.92) 55%);
+}
+.legenda b {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+  color: var(--titulo);
+}
+.legenda small {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vermelho);
+  margin-bottom: 8px;
+}
+.legenda .detalhe {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--texto-suave);
+}
+
+/* ===== Rodapé ===== */
+footer {
+  text-align: center;
+  padding: 40px 5vw;
+  border-top: 1px solid var(--linha);
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* ===== Celular / tablet ===== */
+@media (max-width: 800px) {
+  .bloco { grid-template-columns: 1fr; gap: 30px; padding: 60px 6vw; }
+  .topo nav { display: none; }
+  #historia .lado .capa-jogo,
+  #mapa .lado .capa-jogo { margin-top: 0; }
 }
