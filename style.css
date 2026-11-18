@@ -59,8 +59,9 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);l
   margin:0 auto;
 }
 
-/* Mapa: imagem maior, preenchendo a coluna da esquerda */
-#mapa .lado img{
+/* Mapa e História: imagem maior, preenchendo a coluna da esquerda */
+#mapa .lado img,
+#historia .lado img{
   display:block;
   width:100%;
   height:390px;
@@ -129,7 +130,7 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);l
   display:flex;align-items:center;justify-content:center;
   font-family:var(--serif);font-size:9rem;color:#ffffff1f;
 }
-.retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.5) contrast(1.05)}
+.retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(.5) contrast(1.05)}
 .retrato .legenda{
   position:relative;width:100%;padding:90px 20px 22px;
   background:linear-gradient(transparent,#000d 45%);
@@ -154,7 +155,8 @@ footer p{margin:0}
   .gangue{grid-template-columns:1fr}
   .retrato{min-height:300px}
   .capa-jogo{max-width:360px}
-  #mapa .lado img{height:auto}
+  #mapa .lado img,
+  #historia .lado img{height:auto}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important}

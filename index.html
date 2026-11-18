@@ -147,24 +147,25 @@ atualizaTopo();
 
 /* Personagens (descrição sempre visível) */
 var personagens = [
-  {nome:"Arthur Morgan", papel:"Protagonista", cor:"#6a2a1c", img:"img/arthur.jpg",
+  {nome:"Arthur Morgan", papel:"Protagonista", cor:"#6a2a1c", img:"img/arthur",
    detalhe:"Braço direito de Dutch. Cresceu na gangue e cobra dívidas e faz trabalhos para mantê-la de pé."},
-  {nome:"Dutch van der Linde", papel:"Líder", cor:"#3b2a1f", img:"img/dutch.jpg",
+  {nome:"Dutch van der Linde", papel:"Líder", cor:"#3b2a1f", img:"img/dutch",
    detalhe:"Fundador e líder da gangue. Fala em liberdade e em um plano grande, mas os planos vão dando errado."},
-  {nome:"John Marston", papel:"Pistoleiro", cor:"#2c3a3a", img:"img/john.jpg",
+  {nome:"John Marston", papel:"Pistoleiro", cor:"#2c3a3a", img:"img/john",
    detalhe:"Foi criado pela gangue. Tem um filho com Abigail e é o protagonista do primeiro jogo."},
-  {nome:"Hosea Matthews", papel:"Estrategista", cor:"#4a3d22", img:"img/hosea.jpg",
+  {nome:"Hosea Matthews", papel:"Estrategista", cor:"#4a3d22", img:"img/hosea",
    detalhe:"Parceiro de Dutch desde o início. Calmo e esperto, planeja os golpes da gangue."},
-  {nome:"Sadie Adler", papel:"Caçadora de recompensas", cor:"#4a2a2a", img:"img/sadie.jpg",
+  {nome:"Sadie Adler", papel:"Caçadora de recompensas", cor:"#4a2a2a", img:"img/sadie",
    detalhe:"Entra na gangue depois de perder o marido. Com o tempo se torna uma das atiradoras mais confiáveis."},
-  {nome:"Charles Smith", papel:"Rastreador", cor:"#2a3a2a", img:"img/charles.jpg",
+  {nome:"Charles Smith", papel:"Rastreador", cor:"#2a3a2a", img:"img/charles",
    detalhe:"Caçador e rastreador calmo, leal a Arthur. Sempre tenta evitar violência desnecessária."},
-  {nome:"Micah Bell", papel:"Pistoleiro", cor:"#3a1f1f", img:"img/micah.jpg",
+  {nome:"Micah Bell", papel:"Pistoleiro", cor:"#3a1f1f", img:"img/micah",
    detalhe:"Entra na gangue já no meio da fuga. Violento e ambicioso, ganha a confiança de Dutch."},
-  {nome:"Abigail Roberts", papel:"Mãe de Jack", cor:"#3a2a3a", img:"img/abigail.jpg",
+  {nome:"Abigail Roberts", papel:"Mãe de Jack", cor:"#3a2a3a", img:"img/abigail",
    detalhe:"Mãe de Jack e companheira de John. Tenta manter o filho longe do perigo."}
 ];
 
+var exts = [".png", ".jpg", ".jpeg", ".webp"];
 var gangue = document.getElementById("gangue");
 personagens.forEach(function(p){
   var card = document.createElement("article");
@@ -177,9 +178,14 @@ personagens.forEach(function(p){
   card.appendChild(ini);
 
   var im = document.createElement("img");
-  im.src = p.img;
+  var tentativa = 0;
   im.alt = "";
-  im.onerror = function(){ im.remove(); };
+  im.onerror = function(){
+    tentativa++;
+    if (tentativa < exts.length) { im.src = p.img + exts[tentativa]; }
+    else { im.remove(); }
+  };
+  im.src = p.img + exts[0];
   card.appendChild(im);
 
   var leg = document.createElement("div");
